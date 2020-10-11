@@ -67,6 +67,21 @@ app.post('/addventilator', middleware.checkToken, (req, res) => {
         res.json("1 Item inserted");
     });
 });
+//Add the Hospital details
+app.post('/addhospital',middleware.checkToken, (req, res) => {
+    var hId = req.body.hId;
+    var name = req.body.name;
+    var address = req.body.address;
+    var contactNo = req.body.contactNo;
+    console.log('Adding hospital.....');
+    var add = {"hId":hId, "name":name,"address":address,"contactNo":contactNo};
+    var data = db.collection("hospital").insertOne(add,(err, result) => {
+        if (err) throw err;
+        res.json("Hospital added!");
+
+    });
+});
+
 app.delete('/delete', middleware.checkToken, (req, res) => {
     var ventId = req.body.ventilatorId;
     console.log(ventId);
