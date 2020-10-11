@@ -77,7 +77,7 @@ app.post('/addhospital',middleware.checkToken, (req, res) => {
     var add = {"hId":hId, "name":name,"address":address,"contactNo":contactNo};
     var data = db.collection("hospital").insertOne(add,(err, result) => {
         if (err) throw err;
-        res.json("Hospital added!");
+        res.json("1 Item inserted");
 
     });
 });
