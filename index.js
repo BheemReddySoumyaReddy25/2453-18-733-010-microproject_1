@@ -72,9 +72,10 @@ app.post('/addhospital',middleware.checkToken, (req, res) => {
     var hId = req.body.hId;
     var name = req.body.name;
     var address = req.body.address;
+    var location = req.body.location;
     var contactNo = req.body.contactNo;
     console.log('Adding hospital.....');
-    var add = {"hId":hId, "name":name,"address":address,"contactNo":contactNo};
+    var add = {"hId":hId, "name":name,"location":location,"address":address,"contactNo":contactNo};
     var data = db.collection("hospital").insertOne(add,(err, result) => {
         if (err) throw err;
         res.json("1 Item inserted");
@@ -86,6 +87,14 @@ app.delete('/delete', middleware.checkToken, (req, res) => {
     var ventId = req.body.ventilatorId;
     console.log(ventId);
     db.collection('ventilators').deleteOne({ 'ventilatorId': ventId }, (err, result) => {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+app.delete('/deletehospital', middleware.checkToken, (req, res) => {
+    var hId = req.body.hId;
+    console.log(hId);
+    db.collection('hospital').deleteOne({ 'hId': hId }, (err, result) => {
         if (err) throw err;
         res.json(result);
     });
