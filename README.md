@@ -15,7 +15,7 @@
 * Run the index.js in cmd using below command:
   > nodemon index.js
 * Then open the postman
-* To login go to POST >>localhost:3000/login/
+* To login go to POST >>localhost:100/login/
 * Enter the username and password in json format. Here default username = 'username' and password = 'password'. Then copy the JWT token given by the server
 * Add the token to the headers with key as Authorization and value as *bearer $token*.
 * After Successful login we can fetch details using following commands:
